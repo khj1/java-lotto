@@ -17,18 +17,26 @@ public class LottoController {
 
     public void run() {
         Money money = inputView.readMoney();
-
-        LottoMachine lottoMachine = new LottoMachine(new LottoRandomNumberGenerator());
-        Lottos purchasedLottos = lottoMachine.purchase(money);
+        Lottos purchasedLottos = purchaseLotto(money);
 
         outputView.printPurchaseResult(purchasedLottos);
 
-        List<Integer> lotto = inputView.readLottoNumbers();
-        LottoNumber bonusNumber = inputView.readBonusNumber();
-
-        WinningLotto winningLotto = WinningLotto.of(lotto, bonusNumber);
+        WinningLotto winningLotto = requestWinningLotto();
         LottoResult result = purchasedLottos.compare(winningLotto);
 
         outputView.printWinningResult(result, money);
+    }
+
+    private WinningLotto requestWinningLotto() {
+        List<Integer> lotto = inputView.readLottoNumbers();
+        LottoNumber bonusNumber = inputView.readBonusNumber();
+
+        return WinningLotto.of(lotto, bonusNumber);
+    }
+
+    private static Lottos purchaseLotto(Money money) {
+        LottoMachine lottoMachine = new LottoMachine(new LottoRandomNumberGenerator());
+
+        return lottoMachine.purchase(money);
     }
 }
