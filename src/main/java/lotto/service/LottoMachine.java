@@ -7,13 +7,11 @@ import lotto.domain.Money;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class LottoMachine {
 
-    public static final int START_INCLUSIVE = 0;
-
-    private LottoNumbersGenerator numbersGenerator;
+    private final LottoNumbersGenerator numbersGenerator;
 
     public LottoMachine(LottoNumbersGenerator numbersGenerator) {
         this.numbersGenerator = numbersGenerator;
@@ -26,8 +24,8 @@ public class LottoMachine {
     }
 
     private List<Lotto> getLottos(int quantity) {
-        return IntStream.range(START_INCLUSIVE, quantity)
-                .mapToObj(operand -> Lotto.from(numbersGenerator.generate()))
+        return Stream.generate(() -> Lotto.from(numbersGenerator.generate()))
+                .limit(quantity)
                 .collect(Collectors.toList());
     }
 }
