@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class Lottos {
 
+    public static final String NEW_LINE = "\n";
     private List<Lotto> lottos;
 
     private Lottos(List<Lotto> lottos) {
@@ -31,6 +32,10 @@ public class Lottos {
 
     @Override
     public String toString() {
-        return lottos.toString();
+        StringBuilder message = new StringBuilder();
+
+        lottos.forEach(lotto -> message.append(lotto).append(NEW_LINE));
+
+        return message.toString();
     }
 }
