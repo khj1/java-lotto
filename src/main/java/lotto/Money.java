@@ -2,6 +2,7 @@ package lotto;
 
 public class Money {
     public static final int DIVIDED = 0;
+    public static final int PERCENTAGE_CONVERTER = 100;
 
     private final int money;
 
@@ -33,5 +34,9 @@ public class Money {
 
     public int countAvailable() {
         return money / Lotto.PRICE;
+    }
+
+    public double calculateProfitRate(double totalAmount) {
+        return totalAmount / money * PERCENTAGE_CONVERTER;
     }
 }

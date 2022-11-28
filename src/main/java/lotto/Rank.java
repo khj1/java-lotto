@@ -3,17 +3,19 @@ package lotto;
 import java.util.Arrays;
 
 public enum Rank {
-    FIRST(6),
-    SECOND(5),
-    THIRD(5),
-    FOURTH(4),
-    FIFTH(3),
-    LAST(0);
+    FIRST(6, 2_000_000_000),
+    SECOND(5, 30_000_000),
+    THIRD(5, 1_500_000),
+    FOURTH(4, 50_000),
+    FIFTH(3, 5_000),
+    LAST(0, 0);
 
     private final int matchCount;
+    private double amount;
 
-    Rank(int matchCount) {
+    Rank(int matchCount, double amount) {
         this.matchCount = matchCount;
+        this.amount = amount;
     }
 
     public static Rank of(int matchCount, boolean hasBonusNumber) {
@@ -36,5 +38,9 @@ public enum Rank {
 
     private boolean hasSameMatchCount(int matchCount) {
         return this.matchCount == matchCount;
+    }
+
+    public double getAmount() {
+        return amount;
     }
 }

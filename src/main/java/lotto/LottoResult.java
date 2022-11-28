@@ -18,4 +18,16 @@ public class LottoResult {
     public int count(Rank rank) {
         return Collections.frequency(results, rank);
     }
+
+    public double calculateProfit(Money money) {
+        double totalAmount = getTotalAmount();
+
+        return money.calculateProfitRate(totalAmount);
+    }
+
+    private double getTotalAmount() {
+        return results.stream()
+                .mapToDouble(Rank::getAmount)
+                .sum();
+    }
 }
