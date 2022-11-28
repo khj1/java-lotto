@@ -1,8 +1,8 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.constant.ErrorMessage;
 import lotto.constant.GuidanceMessage;
+import lotto.domain.Lotto;
 import lotto.domain.LottoNumber;
 import lotto.domain.Money;
 import lotto.utils.NumberUtils;
@@ -25,22 +25,30 @@ public class InputView {
         System.out.println(GuidanceMessage.REQUEST_MONEY);
     }
 
-    public List<Integer> readLottoNumbers() {
+    public Lotto readWinningLotto() {
         printRequestWinningNumbers();
 
-        String[] separatedByRegex = Console.readLine().split(REGEX);
-
-        return getNumbers(separatedByRegex);
+        return getWinningLotto();
     }
 
     private void printRequestWinningNumbers() {
         System.out.println(GuidanceMessage.REQUEST_WINNING_NUMBERS);
     }
 
-    private List<Integer> getNumbers(String[] separatedNumbers) {
+    private static String[] separateNumbers() {
+        return Console.readLine().split(REGEX);
+    }
+
+    private List<Integer> getWinningNumbers(String[] separatedNumbers) {
         return Arrays.stream(separatedNumbers)
                 .map(NumberUtils::toInteger)
                 .collect(Collectors.toList());
+    }
+
+    private Lotto getWinningLotto() {
+        List<Integer> winningNumbers = getWinningNumbers(separateNumbers());
+
+        return Lotto.from(winningNumbers);
     }
 
     public LottoNumber readBonusNumber() {

@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.Lotto;
 import lotto.service.LottoMachine;
 import lotto.domain.LottoNumber;
 import lotto.utils.LottoRandomNumberGenerator;
@@ -9,8 +10,6 @@ import lotto.domain.Money;
 import lotto.domain.WinningLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
-
-import java.util.List;
 
 public class LottoController {
 
@@ -35,7 +34,7 @@ public class LottoController {
     }
 
     private WinningLotto requestWinningLotto() {
-        List<Integer> lotto = inputView.readLottoNumbers();
+        Lotto lotto = inputView.readWinningLotto();
         LottoNumber bonusNumber = inputView.readBonusNumber();
 
         return WinningLotto.of(lotto, bonusNumber);

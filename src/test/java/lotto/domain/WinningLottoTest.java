@@ -16,7 +16,8 @@ public class WinningLottoTest {
     @ParameterizedTest(name = "로또 번호 : {0}, 당첨 결과 : {1}")
     @MethodSource("createPurchasedLottoAndRank")
     void compareLottoNumber(List<Integer> numbers, Rank rank) {
-        WinningLotto winningLotto = WinningLotto.of(List.of(1, 2, 3, 4, 5, 6), LottoNumber.from(7));
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        WinningLotto winningLotto = WinningLotto.of(Lotto.from(winningNumbers), LottoNumber.from(7));
         Lotto lotto = Lotto.from(numbers);
 
         assertThat(winningLotto.compare(lotto)).isEqualTo(rank);

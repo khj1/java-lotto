@@ -16,7 +16,8 @@ public class LottoResultTest {
     void createCountWinningTest() {
         LottoMachine lottoMachine = new LottoMachine(new LottoTestNumbersGenerator());
         Lottos lottos = lottoMachine.purchase(Money.from("8000"));
-        WinningLotto winningLotto = WinningLotto.of(List.of(1, 2, 3, 4, 5, 6), LottoNumber.from(7));
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        WinningLotto winningLotto = WinningLotto.of(Lotto.from(winningNumbers), LottoNumber.from(7));
 
         LottoResult result = lottos.compare(winningLotto);
 
@@ -28,8 +29,9 @@ public class LottoResultTest {
     void createProfitRateTest() {
         LottoMachine lottoMachine = new LottoMachine(new LottoTestNumbersGenerator());
         Money money = Money.from("8000");
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         Lottos lottos = lottoMachine.purchase(money);
-        WinningLotto winningLotto = WinningLotto.of(List.of(1, 2, 3, 4, 5, 6), LottoNumber.from(7));
+        WinningLotto winningLotto = WinningLotto.of(Lotto.from(winningNumbers), LottoNumber.from(7));
 
         LottoResult result = lottos.compare(winningLotto);
         double profit = result.calculateProfit(money);
