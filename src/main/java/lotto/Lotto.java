@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Lotto {
     public static final int LOTTO_SIZE = 6;
+    public static final int PRICE = 1_000;
 
     private final List<Integer> numbers;
 
