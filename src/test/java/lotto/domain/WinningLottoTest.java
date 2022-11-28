@@ -18,9 +18,10 @@ public class WinningLottoTest {
     void compareLottoNumber(List<Integer> numbers, Rank rank) {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         WinningLotto winningLotto = WinningLotto.of(Lotto.from(winningNumbers), LottoNumber.from(7));
-        Lotto lotto = Lotto.from(numbers);
 
-        assertThat(winningLotto.compare(lotto)).isEqualTo(rank);
+        Lotto purchasedLotto = Lotto.from(numbers);
+
+        assertThat(winningLotto.compare(purchasedLotto)).isEqualTo(rank);
     }
 
     public static Stream<Arguments> createPurchasedLottoAndRank() {
