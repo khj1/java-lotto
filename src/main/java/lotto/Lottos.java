@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lottos {
 
@@ -12,6 +13,16 @@ public class Lottos {
 
     public static Lottos from(List<Lotto> lottos) {
         return new Lottos(lottos);
+    }
+
+    public LottoResult compare(WinningLotto winningLotto) {
+        return LottoResult.of(compareEach(winningLotto));
+    }
+
+    private List<Rank> compareEach(WinningLotto winningLotto) {
+        return lottos.stream()
+                .map(winningLotto::compare)
+                .collect(Collectors.toList());
     }
 
     public int size() {
