@@ -1,4 +1,9 @@
-package lotto;
+package lotto.service;
+
+import lotto.domain.Lotto;
+import lotto.utils.LottoNumbersGenerator;
+import lotto.domain.Lottos;
+import lotto.domain.Money;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,10 +1,10 @@
 package lotto.view;
 
-import lotto.ErrorMessage;
-import lotto.LottoResult;
-import lotto.Lottos;
-import lotto.Money;
-import lotto.Rank;
+import lotto.constant.ErrorMessage;
+import lotto.domain.LottoResult;
+import lotto.domain.Lottos;
+import lotto.domain.Money;
+import lotto.domain.Rank;
 
 public class OutputView {
 

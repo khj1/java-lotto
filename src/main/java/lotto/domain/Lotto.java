@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.constant.ErrorMessage;
 
 import java.util.ArrayList;
 import java.util.Collections;

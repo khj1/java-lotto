@@ -1,10 +1,11 @@
 package lotto;
 
+import lotto.utils.LottoNumbersGenerator;
 import org.assertj.core.util.Lists;
 
 import java.util.List;
 
-public class LottoTestNumbersGenerator implements LottoNumbersGenerator{
+public class LottoTestNumbersGenerator implements LottoNumbersGenerator {
 
     public static final int VERY_FRONT = 0;
 

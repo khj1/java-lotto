@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -6,13 +6,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-public class MoneyTest {
+public class LottoNumberTest {
 
-    @DisplayName("구입 금액에 대한 예외 처리")
+    @DisplayName("로또 번호에 관한 예외 처리")
     @ParameterizedTest
-    @ValueSource(strings = {"", " ", "-1000", "1001", "1000r"})
-    void createInvalidMoney(String money) {
+    @ValueSource(ints = {0, 46, -1})
+    void createInvalidLottoNumber(int number) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> Money.from(money));
+                .isThrownBy(() -> LottoNumber.from(number));
     }
 }

@@ -1,9 +1,9 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.GuidanceMessage;
-import lotto.LottoNumber;
-import lotto.Money;
+import lotto.constant.GuidanceMessage;
+import lotto.domain.LottoNumber;
+import lotto.domain.Money;
 
 import java.util.Arrays;
 import java.util.List;

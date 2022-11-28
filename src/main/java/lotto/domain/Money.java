@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.constant.ErrorMessage;
 
 public class Money {
     public static final int DIVIDED = 0;
