@@ -13,6 +13,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public static Lotto from(List<Integer> numbers) {
+        return new Lotto(numbers);
+    }
+
     private void validate(List<Integer> numbers) {
         if (isValidSize(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_SIZE);
@@ -30,6 +34,16 @@ public class Lotto {
 
     private static boolean isValidSize(List<Integer> numbers) {
         return numbers.size() != LOTTO_SIZE;
+    }
+
+    public int countMatch(Lotto otherLotto) {
+        return (int) numbers.stream()
+                .filter(otherLotto::contains)
+                .count();
+    }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
     }
 
     // TODO: 추가 기능 구현
