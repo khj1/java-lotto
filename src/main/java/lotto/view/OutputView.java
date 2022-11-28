@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.ErrorMessage;
 import lotto.LottoResult;
 import lotto.Lottos;
 import lotto.Money;
@@ -16,6 +17,10 @@ public class OutputView {
     public static final String THIRD_RANK_COUNT = "5개 일치 (1,500,000원) - %d개%n";
     public static final String SECOND_RANK_COUNT = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개%n";
     public static final String FIRST_RANK_COUNT = "6개 일치 (2,000,000,000원) - %d개%n";
+
+    public static void printError(IllegalArgumentException error) {
+        System.out.println(ErrorMessage.PREFIX + error.getMessage());
+    }
 
     public void printPurchaseResult(Lottos lottos) {
         printQuantity(lottos);
