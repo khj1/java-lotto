@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -16,6 +17,15 @@ public class Lotto {
         if (isValidSize(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_SIZE);
         }
+        if (isDuplicated(numbers)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBERS);
+        }
+    }
+
+    private boolean isDuplicated(List<Integer> numbers) {
+        HashSet<Integer> uniqueNumbers = new HashSet<>(numbers);
+
+        return uniqueNumbers.size() != LOTTO_SIZE;
     }
 
     private static boolean isValidSize(List<Integer> numbers) {
