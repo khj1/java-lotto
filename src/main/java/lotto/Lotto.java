@@ -54,5 +54,10 @@ public class Lotto {
         return numbers.contains(number);
     }
 
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
+
     // TODO: 추가 기능 구현
 }

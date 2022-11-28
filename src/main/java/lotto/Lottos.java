@@ -28,4 +28,9 @@ public class Lottos {
     public int size() {
         return lottos.size();
     }
+
+    @Override
+    public String toString() {
+        return lottos.toString();
+    }
 }
