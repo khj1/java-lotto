@@ -2,16 +2,17 @@ package lotto;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     public static final int LOTTO_SIZE = 6;
     public static final int PRICE = 1_000;
 
-    private final List<Integer> numbers;
+    private final List<LottoNumber> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = convertToLottoNumbers(numbers);
     }
 
     public static Lotto from(List<Integer> numbers) {
@@ -37,13 +38,19 @@ public class Lotto {
         return numbers.size() != LOTTO_SIZE;
     }
 
+    private List<LottoNumber> convertToLottoNumbers(List<Integer> numbers) {
+        return numbers.stream()
+                .map(LottoNumber::from)
+                .collect(Collectors.toList());
+    }
+
     public int countMatch(Lotto otherLotto) {
         return (int) numbers.stream()
                 .filter(otherLotto::contains)
                 .count();
     }
 
-    public boolean contains(int number) {
+    public boolean contains(LottoNumber number) {
         return numbers.contains(number);
     }
 
