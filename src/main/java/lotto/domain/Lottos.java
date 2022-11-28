@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 public class Lottos {
 
     public static final String NEW_LINE = "\n";
-    private List<Lotto> lottos;
+
+    private final List<Lotto> lottos;
 
     private Lottos(List<Lotto> lottos) {
         this.lottos = lottos;

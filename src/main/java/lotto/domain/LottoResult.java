@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LottoResult {
 
-    private List<Rank> results;
+    private final List<Rank> results;
 
     private LottoResult(List<Rank> results) {
         this.results = results;

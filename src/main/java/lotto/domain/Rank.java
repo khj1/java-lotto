@@ -11,7 +11,7 @@ public enum Rank {
     LAST(0, 0);
 
     private final int matchCount;
-    private double amount;
+    private final double amount;
 
     Rank(int matchCount, double amount) {
         this.matchCount = matchCount;
