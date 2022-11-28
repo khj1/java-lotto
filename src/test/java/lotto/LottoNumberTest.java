@@ -13,6 +13,6 @@ public class LottoNumberTest {
     @ValueSource(ints = {0, 46, -1})
     void createInvalidLottoNumber(int number) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> LottoNumber.of(number));
+                .isThrownBy(() -> LottoNumber.from(number));
     }
 }

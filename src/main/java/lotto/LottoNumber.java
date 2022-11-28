@@ -22,7 +22,7 @@ public class LottoNumber {
         return number < MIN || number > MAX;
     }
 
-    public static LottoNumber of(int number) {
+    public static LottoNumber from(int number) {
         return new LottoNumber(number);
     }
 }
