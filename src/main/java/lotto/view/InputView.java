@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
+import lotto.LottoNumber;
 import lotto.Money;
 
 import java.util.Arrays;
@@ -26,5 +27,9 @@ public class InputView {
         return Arrays.stream(separatedNumbers)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public LottoNumber readBonusNumber() {
+        return LottoNumber.from(Console.readLine());
     }
 }

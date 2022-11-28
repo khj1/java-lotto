@@ -28,6 +28,18 @@ public class LottoNumber {
         return new LottoNumber(number);
     }
 
+    public static LottoNumber from(String number) {
+        return new LottoNumber(toInteger(number));
+    }
+
+    private static int toInteger(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (Exception error) {
+            throw new IllegalArgumentException(ErrorMessage.NON_NUMERIC_NUMBER);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
