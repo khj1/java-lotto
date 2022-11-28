@@ -1,9 +1,11 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.constant.ErrorMessage;
 import lotto.constant.GuidanceMessage;
 import lotto.domain.LottoNumber;
 import lotto.domain.Money;
+import lotto.utils.NumberUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,9 +37,9 @@ public class InputView {
         System.out.println(GuidanceMessage.REQUEST_WINNING_NUMBERS);
     }
 
-    private static List<Integer> getNumbers(String[] separatedNumbers) {
+    private List<Integer> getNumbers(String[] separatedNumbers) {
         return Arrays.stream(separatedNumbers)
-                .map(Integer::parseInt)
+                .map(NumberUtils::toInteger)
                 .collect(Collectors.toList());
     }
 

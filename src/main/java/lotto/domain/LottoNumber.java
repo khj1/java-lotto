@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.constant.ErrorMessage;
+import lotto.utils.NumberUtils;
 
 import java.util.Objects;
 
@@ -31,15 +32,7 @@ public class LottoNumber {
     }
 
     public static LottoNumber from(String number) {
-        return new LottoNumber(toInteger(number));
-    }
-
-    private static int toInteger(String number) {
-        try {
-            return Integer.parseInt(number);
-        } catch (Exception error) {
-            throw new IllegalArgumentException(ErrorMessage.NON_NUMERIC_NUMBER);
-        }
+        return new LottoNumber(NumberUtils.toInteger(number));
     }
 
     @Override
