@@ -2,7 +2,6 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.GuidanceMessage;
-import lotto.Lotto;
 import lotto.LottoNumber;
 import lotto.Money;
 
@@ -24,12 +23,12 @@ public class InputView {
         System.out.println(GuidanceMessage.REQUEST_MONEY);
     }
 
-    public Lotto readLottoNumbers() {
+    public List<Integer> readLottoNumbers() {
         printRequestWinningNumbers();
 
         String[] separatedByRegex = Console.readLine().split(REGEX);
 
-        return Lotto.from(getNumbers(separatedByRegex));
+        return getNumbers(separatedByRegex);
     }
 
     private void printRequestWinningNumbers() {

@@ -7,12 +7,12 @@ public class WinningLotto {
     private final Lotto winningLotto;
     private final LottoNumber bonusNumber;
 
-    public WinningLotto(List<Integer> numbers, int bonusNumber) {
+    private WinningLotto(List<Integer> numbers, LottoNumber bonusNumber) {
         this.winningLotto = Lotto.from(numbers);
-        this.bonusNumber = LottoNumber.from(bonusNumber);
+        this.bonusNumber = bonusNumber;
     }
 
-    public static WinningLotto of(List<Integer> numbers, int bonusNumber) {
+    public static WinningLotto of(List<Integer> numbers, LottoNumber bonusNumber) {
         return new WinningLotto(numbers, bonusNumber);
     }
 
