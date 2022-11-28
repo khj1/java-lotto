@@ -30,4 +30,8 @@ public class Money {
     public static Money from(String money) {
         return new Money(money);
     }
+
+    public int countAvailable() {
+        return money / Lotto.PRICE;
+    }
 }
