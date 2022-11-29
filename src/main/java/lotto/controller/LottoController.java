@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.constant.ErrorMessage;
 import lotto.domain.Lotto;
 import lotto.service.LottoMachine;
 import lotto.domain.LottoNumber;
@@ -34,10 +35,18 @@ public class LottoController {
     }
 
     private WinningLotto requestWinningLotto() {
-        Lotto lotto = inputView.readWinningLotto();
+        Lotto winningLotto = inputView.readWinningLotto();
         LottoNumber bonusNumber = inputView.readBonusNumber();
 
-        return WinningLotto.of(lotto, bonusNumber);
+        validateBonusNumber(winningLotto, bonusNumber);
+
+        return WinningLotto.of(winningLotto, bonusNumber);
+    }
+
+    private void validateBonusNumber(Lotto winningLotto, LottoNumber bonusNumber) {
+        if (winningLotto.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_BONUS_NUMBER);
+        }
     }
 
     private static Lottos purchaseLotto(Money money) {
